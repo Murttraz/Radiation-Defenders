@@ -4,15 +4,17 @@ public class Beam : MonoBehaviour
 {
     //Credit to Dogma427 @ YouTube
     //https://youtu.be/TokDH2OSiBE?si=0lGIbyeafzvABGtB (Video I used as reference to help make this script)
-    
-    float Damage = 0.5f;
+    Player player;
+    float Damage;
     private LineRenderer ProtonBeam;
     public Transform barrel;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake()
     {
+        player = GameObject.FindGameObjectWithTag("player").GetComponent<Player>();
         ProtonBeam = GetComponent<LineRenderer>();
+        Damage = player.damage;
     }
 
     // Update is called once per frame
@@ -37,6 +39,7 @@ public class Beam : MonoBehaviour
             ProtonBeam.SetPosition(1, barrel.transform.forward * 500);
         }
 
+        Damage = player.damage;
     }
 
     /*private void OnTriggerEnter(Collider other)
