@@ -1,4 +1,5 @@
 
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -8,6 +9,7 @@ public class Player : MonoBehaviour
 {
     private int playerHealth = 100;
     private float speed = 5f, rotation = 20f;
+    public float damage = 0.5f;
     public int meter = 1000;
 
     public InputActionAsset actions;
@@ -115,7 +117,20 @@ public class Player : MonoBehaviour
         playerHealth -= (int)f;
     }
 
-     IEnumerator RechargeMeter()
+    private void PowerUp(String name)
+    {
+        switch (name)
+        {
+            /*case ("Peposertib"):
+                GameObject[] CurrentEnemies = 
+                break;*/
+            case ("Temozolomide"):
+
+                break;
+        }
+    }
+
+    IEnumerator RechargeMeter()
     {
         yield return new WaitForSeconds(2f);
         while (meter <= 1000)
