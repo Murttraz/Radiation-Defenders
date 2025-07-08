@@ -395,31 +395,20 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "up",
-                    "id": "182d3bdd-9871-4edc-bcb5-2ce0f544ea71",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Aim",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "f211af47-4129-4bc2-9f9a-66117efaa25e",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Aim",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
                     "name": "left",
-                    "id": "ec152c52-d535-4257-a551-b05d59124dd5",
+                    "id": "b4ee2bb7-4cf4-4540-84e5-0413a602c19e",
                     "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Aim",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Down",
+                    "id": "ec152c52-d535-4257-a551-b05d59124dd5",
+                    "path": "<Keyboard>/downArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
@@ -431,6 +420,17 @@
                     "name": "right",
                     "id": "f839356f-b7a2-4351-9f68-328c8fd24521",
                     "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Aim",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Up",
+                    "id": "0eb2ff05-01e3-4e1c-bbd9-273a48fbc7eb",
+                    "path": "<Keyboard>/upArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",

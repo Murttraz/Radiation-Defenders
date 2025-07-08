@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     private int playerHealth = 100;
-    private float speed = 5f, rotation = 20f;
+    private float speed = 5f, rotation = 20f, intensity = 5f;
     public float damage = 0.5f;
     public int meter = 1000;
 
@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
     Rigidbody Player_rb;
 
     public Transform Barrel;
-    public Rigidbody BeamGun_rb;
+    public Rigidbody BeamGun_rb, BeamEnd;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     
@@ -77,6 +77,8 @@ public class Player : MonoBehaviour
         {
             this.gameObject.SetActive(false);
         }
+
+        BeamEnd.position = Barrel.position + Barrel.forward * intensity;
         //Text meterdisplay = meterGUI.GetComponent<Text>();
         //meterdisplay.text = meter.ToString();
     }
@@ -97,10 +99,13 @@ public class Player : MonoBehaviour
     {
         if (BeamGun_rb.rotation.z <= 30 && BeamGun_rb.rotation.z >= -30)
         {
+            
             float r = P_aimAmt.x * rotation * Time.deltaTime;
             Quaternion deltaRot = Quaternion.Euler(0, 0, -r);
             BeamGun_rb.MoveRotation(BeamGun_rb.rotation * deltaRot);
         }
+
+        intensity += P_aimAmt.y * Time.deltaTime * speed;
     }
 
     private void Fire()
@@ -117,18 +122,18 @@ public class Player : MonoBehaviour
         playerHealth -= (int)f;
     }
 
-    private void PowerUp(String name)
+    /*private void PowerUp(String name)
     {
         switch (name)
         {
-            /*case ("Peposertib"):
+            case ("Peposertib"):
                 GameObject[] CurrentEnemies = 
-                break;*/
+                break;
             case ("Temozolomide"):
 
                 break;
         }
-    }
+    }*/
 
     IEnumerator RechargeMeter()
     {
