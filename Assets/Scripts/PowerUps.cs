@@ -45,7 +45,7 @@ public class PowerUps : MonoBehaviour
     {
         foreach (GameObject p in PemPoisons)
         {
-            if (p != null)
+            if (p != null && p.transform.position.y <= 0)
             {
                 p.transform.Translate(0, 5, 0);
             }

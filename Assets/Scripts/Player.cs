@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     private int playerHealth = 100;
-    private float speed = 5f, rotation = 20f, intensity = 5f;
+    private float speed = 5f, rotation = 30f, intensity = 5f;
     public float damage = 0.5f;
     public int meter = 1000;
 
@@ -79,8 +79,6 @@ public class Player : MonoBehaviour
         }
 
         BeamEnd.position = Barrel.position + Barrel.forward * intensity;
-        //Text meterdisplay = meterGUI.GetComponent<Text>();
-        //meterdisplay.text = meter.ToString();
     }
 
     private void FixedUpdate()
@@ -121,19 +119,6 @@ public class Player : MonoBehaviour
     {
         playerHealth -= (int)f;
     }
-
-    /*private void PowerUp(String name)
-    {
-        switch (name)
-        {
-            case ("Peposertib"):
-                GameObject[] CurrentEnemies = 
-                break;
-            case ("Temozolomide"):
-
-                break;
-        }
-    }*/
 
     IEnumerator RechargeMeter()
     {
