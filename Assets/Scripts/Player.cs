@@ -9,13 +9,13 @@ public class Player : MonoBehaviour
 {
     public int playerHealth = 100;
     private float speed = 5f, rotation = 30f, intensity = 5f;
-    public float damage = 0.5f;
+    public float damage = 0.5f, rb;
     public int meter = 1000, score;
 
     public InputActionAsset actions;
 
     private InputAction P_Move, P_Aim, P_Fire;
-    private Vector2 P_moveAmt, P_aimAmt;
+    public Vector2 P_moveAmt, P_aimAmt;
     Vector3 pos;
     [SerializeField] Transform PlayerPos;
     [SerializeField] BoxCollider PlayerCollider;
@@ -80,8 +80,10 @@ public class Player : MonoBehaviour
             this.gameObject.SetActive(false);
             Time.timeScale = 0f;
         }
-
+        
         BeamEnd.position = Barrel.position + Barrel.forward * intensity;
+
+        rb = BeamGun_rb.rotation.z;
     }
 
     private void FixedUpdate()
@@ -98,15 +100,25 @@ public class Player : MonoBehaviour
 
     private void Aiming()
     {
-        if (BeamGun_rb.rotation.z <= 30 && BeamGun_rb.rotation.z >= -30)
+        if ((BeamGun_rb.rotation.z <= 0.40 && P_aimAmt.x == -1) || (BeamGun_rb.rotation.z >= -0.40 && P_aimAmt.x == 1))
         {
-            
             float r = P_aimAmt.x * rotation * Time.deltaTime;
             Quaternion deltaRot = Quaternion.Euler(0, 0, -r);
             BeamGun_rb.MoveRotation(BeamGun_rb.rotation * deltaRot);
         }
 
-        intensity += P_aimAmt.y * Time.deltaTime * speed;
+        if (intensity >= 2 && intensity <= 8)
+        {
+            intensity += P_aimAmt.y * Time.deltaTime * speed;
+        }
+        else if (intensity < 2)
+        {
+            intensity = 2;
+        }
+        else if (intensity > 8)
+        {
+            intensity = 8;
+        }
     }
 
     private void Fire()
