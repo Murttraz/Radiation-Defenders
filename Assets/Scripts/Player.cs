@@ -7,10 +7,10 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
-    private int playerHealth = 100;
+    public int playerHealth = 100;
     private float speed = 5f, rotation = 30f, intensity = 5f;
     public float damage = 0.5f;
-    public int meter = 1000;
+    public int meter = 1000, score;
 
     public InputActionAsset actions;
 
@@ -48,6 +48,8 @@ public class Player : MonoBehaviour
 
         Player_rb = GetComponent<Rigidbody>();
         Barrel.gameObject.SetActive(false);
+
+        score = 0;
     }
 
     // Update is called once per frame
@@ -76,6 +78,7 @@ public class Player : MonoBehaviour
         if(playerHealth <= 0)
         {
             this.gameObject.SetActive(false);
+            Time.timeScale = 0f;
         }
 
         BeamEnd.position = Barrel.position + Barrel.forward * intensity;
@@ -118,6 +121,12 @@ public class Player : MonoBehaviour
     public void TakeDamage(float f)
     {
         playerHealth -= (int)f;
+    }
+
+    public void AddScore(int s)
+    {
+        score += s;
+        Debug.Log("Score: " + score);
     }
 
     IEnumerator RechargeMeter()
