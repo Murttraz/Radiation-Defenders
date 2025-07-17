@@ -7,7 +7,7 @@ public class Beam : MonoBehaviour
     Player player;
     float Damage;
     private LineRenderer ProtonBeam;
-    public Transform barrel;
+    public Transform barrel, EndPoint;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake()
@@ -16,6 +16,11 @@ public class Beam : MonoBehaviour
         ProtonBeam = GetComponent<LineRenderer>();
         Damage = player.damage;
     }
+
+    /*private void Intensify(float intensity)
+    {
+        If
+    }*/
 
     // Update is called once per frame
     void Update()
@@ -36,7 +41,7 @@ public class Beam : MonoBehaviour
         }
         else
         {
-            ProtonBeam.SetPosition(1, barrel.transform.forward * 500);
+            ProtonBeam.SetPosition(1, EndPoint.position);
         }
 
         Damage = player.damage;

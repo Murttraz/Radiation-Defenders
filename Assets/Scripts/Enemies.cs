@@ -5,6 +5,7 @@ using UnityEngine;
 public class Enemies : MonoBehaviour
 {
     float health, harm;
+    int points;
     public GameObject player;
 
     [SerializeField] private Rigidbody rb;
@@ -18,6 +19,7 @@ public class Enemies : MonoBehaviour
     {
         InvokeRepeating("Grow", 0.5f, 2f);
         InvokeRepeating("DealDamage", 3f, 1f);
+        
     }
 
     private void Awake()
@@ -31,12 +33,14 @@ public class Enemies : MonoBehaviour
         GrowthRate = new Vector3(0.5f, 0.5f, 0.5f);
         DamageShrink = new Vector3(-0.1f, -0.1f, -0.1f);
         player = GameObject.FindWithTag("player");
+        points = 500;
     }
 
     void Grow()
     {
         Enemy.localScale += GrowthRate;
         health += 5;
+        points -= 50;
     }
 
     public void TakeDamage(float damage)
@@ -62,6 +66,10 @@ public class Enemies : MonoBehaviour
             
         }
         if (health <= 0 || Enemy.localScale.x <= 0.4) {
+            if (player != null)
+            {
+                player.transform.GetComponent<Player>().AddScore(points);
+            }
             CancelInvoke("DealDamage");
             Destroy(this.gameObject);
         }

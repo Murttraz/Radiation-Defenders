@@ -7,22 +7,22 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
-    private int playerHealth = 100;
-    private float speed = 5f, rotation = 20f;
-    public float damage = 0.5f;
-    public int meter = 1000;
+    public int playerStamina = 100;
+    private float speed = 5f, rotation = 30f, intensity = 5f;
+    public float damage = 0.5f, rb;
+    public int meter = 1000, score;
 
     public InputActionAsset actions;
 
     private InputAction P_Move, P_Aim, P_Fire;
-    private Vector2 P_moveAmt, P_aimAmt;
+    public Vector2 P_moveAmt, P_aimAmt;
     Vector3 pos;
     [SerializeField] Transform PlayerPos;
     [SerializeField] BoxCollider PlayerCollider;
     Rigidbody Player_rb;
 
     public Transform Barrel;
-    public Rigidbody BeamGun_rb;
+    public Rigidbody BeamGun_rb, BeamEnd;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     
@@ -48,6 +48,8 @@ public class Player : MonoBehaviour
 
         Player_rb = GetComponent<Rigidbody>();
         Barrel.gameObject.SetActive(false);
+
+        score = 0;
     }
 
     // Update is called once per frame
@@ -73,12 +75,15 @@ public class Player : MonoBehaviour
         if(meter <= 0)
             Barrel.gameObject.SetActive(false);
 
-        if(playerHealth <= 0)
+        if(playerStamina <= 0)
         {
             this.gameObject.SetActive(false);
+            Time.timeScale = 0f;
         }
-        //Text meterdisplay = meterGUI.GetComponent<Text>();
-        //meterdisplay.text = meter.ToString();
+        
+        BeamEnd.position = Barrel.position + Barrel.forward * intensity;
+
+        rb = BeamGun_rb.rotation.z;
     }
 
     private void FixedUpdate()
@@ -95,11 +100,24 @@ public class Player : MonoBehaviour
 
     private void Aiming()
     {
-        if (BeamGun_rb.rotation.z <= 30 && BeamGun_rb.rotation.z >= -30)
+        if ((BeamGun_rb.rotation.z <= 0.40 && P_aimAmt.x == -1) || (BeamGun_rb.rotation.z >= -0.40 && P_aimAmt.x == 1))
         {
             float r = P_aimAmt.x * rotation * Time.deltaTime;
             Quaternion deltaRot = Quaternion.Euler(0, 0, -r);
             BeamGun_rb.MoveRotation(BeamGun_rb.rotation * deltaRot);
+        }
+
+        if (intensity >= 2 && intensity <= 8)
+        {
+            intensity += P_aimAmt.y * Time.deltaTime * speed;
+        }
+        else if (intensity < 2)
+        {
+            intensity = 2;
+        }
+        else if (intensity > 8)
+        {
+            intensity = 8;
         }
     }
 
@@ -114,20 +132,13 @@ public class Player : MonoBehaviour
     }
     public void TakeDamage(float f)
     {
-        playerHealth -= (int)f;
+        playerStamina -= (int)f;
     }
 
-    private void PowerUp(String name)
+    public void AddScore(int s)
     {
-        switch (name)
-        {
-            /*case ("Peposertib"):
-                GameObject[] CurrentEnemies = 
-                break;*/
-            case ("Temozolomide"):
-
-                break;
-        }
+        score += s;
+        Debug.Log("Score: " + score);
     }
 
     IEnumerator RechargeMeter()
