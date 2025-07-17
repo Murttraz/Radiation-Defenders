@@ -17,6 +17,6 @@ public class PlayerGUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        meterGUI.text = "Proton Meter: "+ Player.meter+"\nScore: "+ Player.score+"\t\t\tStamina: "+Player.playerHealth;
+        meterGUI.text = "Proton Meter: "+ Player.meter+"\nScore: "+ Player.score+"\t\t\tStamina: "+Player.playerStamina;
     }
 }

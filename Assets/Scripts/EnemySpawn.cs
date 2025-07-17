@@ -5,9 +5,10 @@ public class EnemySpawn : MonoBehaviour
 {
     public GameObject Enemy;
     public List<GameObject> EnemyList = new List<GameObject>();
-    public GameObject[] SpawnedEnemies = new GameObject[5];
-    public Transform[] SpawnLocs = new Transform[5];
+    public GameObject[] SpawnedEnemies;
+    public Transform[] SpawnLocs;
     int counter = 0;
+    int SE, SL;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -16,47 +17,24 @@ public class EnemySpawn : MonoBehaviour
         EnemyList.Add(Enemy);
         }
         InvokeRepeating("Spawn", 2f, 3f);
+        SE = SpawnedEnemies.Length-1;
+        SL = SpawnLocs.Length-1;
     }
 
     void Spawn()
     {
+        int locate = Random.Range(0, SE);
         if (SpawnLocs.Length != 0 && EnemyList.Count != 0)
         {
-            if (EnemyList[0] != null && SpawnedEnemies[counter%5] == null)
+            if (EnemyList[0] != null && SpawnedEnemies[locate % SE] == null)
             {
-                GameObject newEnemy = Instantiate(EnemyList[0], SpawnLocs[counter % 5]);
-                SpawnedEnemies[counter % 5] = newEnemy;
+                GameObject newEnemy = Instantiate(EnemyList[0], SpawnLocs[locate % SL]);
+                SpawnedEnemies[counter % SE] = newEnemy;
                 EnemyList.Remove(EnemyList[0]);
             }
         }
-        counter++;
+        //counter++;
     }
-
-    /*void AddToSpawned(GameObject newEnemy)
-    {
-        for (int i = SpawnedEnemies.Length - 1; i >= 0; i--)
-        {
-            if (SpawnedEnemies[i] == null)
-            {
-                EnemyList[i] = newEnemy;
-                return;
-            }
-        }
-    }
-
-    int checkSpawned()
-    {
-        int space = -1;
-        for (int i = SpawnedEnemies.Length-1; i >= 0; i--)
-        {
-            if(SpawnedEnemies[i] == null)
-            {
-               space = i;
-                break;
-            }
-        }
-        return space;
-    }*/
 
     // Update is called once per frame
     void Update()

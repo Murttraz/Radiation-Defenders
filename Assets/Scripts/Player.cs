@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
-    public int playerHealth = 100;
+    public int playerStamina = 100;
     private float speed = 5f, rotation = 30f, intensity = 5f;
     public float damage = 0.5f, rb;
     public int meter = 1000, score;
@@ -75,7 +75,7 @@ public class Player : MonoBehaviour
         if(meter <= 0)
             Barrel.gameObject.SetActive(false);
 
-        if(playerHealth <= 0)
+        if(playerStamina <= 0)
         {
             this.gameObject.SetActive(false);
             Time.timeScale = 0f;
@@ -132,7 +132,7 @@ public class Player : MonoBehaviour
     }
     public void TakeDamage(float f)
     {
-        playerHealth -= (int)f;
+        playerStamina -= (int)f;
     }
 
     public void AddScore(int s)

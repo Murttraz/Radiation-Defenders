@@ -6,18 +6,21 @@ public class ItemSpawn : MonoBehaviour
 {
     public List<GameObject> powers = new List<GameObject>(); 
     public Transform[] transforms = new Transform[3];
-    static int counter = 0;
+    static int counter = 0, pCount;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         InvokeRepeating("SpawnPower", 5f, 5f);
+        pCount = powers.Count;
+
     }
 
     void SpawnPower()
     {
-        Rigidbody item = Instantiate(powers[counter%3].GetComponent<Rigidbody>(), transforms[counter%3].position + transforms[counter%3].forward, Quaternion.identity).GetComponent<Rigidbody>();
-        item.AddForce(transforms[counter % 3].forward*3, ForceMode.Impulse);
-        counter++;
+        counter = Random.Range(0, transforms.Length - 1);
+        Rigidbody item = Instantiate(powers[counter% pCount].GetComponent<Rigidbody>(), transforms[counter% pCount].position + transforms[counter%pCount].forward, Quaternion.identity).GetComponent<Rigidbody>();
+        item.AddForce(transforms[counter % pCount].forward*3, ForceMode.Impulse);
+        //counter++;
         Destroy(item.gameObject, 8f);
     }
 

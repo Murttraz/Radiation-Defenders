@@ -50,7 +50,7 @@ public class PowerUps : MonoBehaviour
                 p.transform.Translate(0, 5, 0);
             }
         }
-        yield return new WaitForSecondsRealtime(5f);
+        yield return new WaitForSecondsRealtime(3f);
         foreach (GameObject p in PemPoisons)
         {
             if (p != null)
@@ -90,7 +90,7 @@ public class PowerUps : MonoBehaviour
                 case ("Pembrolizumab"):
                     this.gameObject.transform.Translate(0, -5, 0);
                     StartCoroutine(Pem());
-                    Destroy(this.gameObject, 6f);
+                    Destroy(this.gameObject, 12f);
                     break;
             }
             //Destroy(this.gameObject, 2f);
