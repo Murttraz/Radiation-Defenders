@@ -6,11 +6,12 @@ public class Enemies : MonoBehaviour
 {
     float health, harm;
     int points;
-    public GameObject player;
+    public GameObject player, pemPoison;
 
     [SerializeField] private Rigidbody rb;
     [SerializeField] private Transform Enemy;
     [SerializeField] private SphereCollider EnemyHitbox;
+
 
     private Vector3 GrowthRate, DamageShrink;
 
