@@ -122,6 +122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1913652759737491725, guid: 4b770cd1bc99bf44ebb8253246c0618d, type: 3}
+  pemPoison: {fileID: 6248372777441138423, guid: 39995670fb40ea14982ae1e1f5a9a1ed, type: 3}
   rb: {fileID: 0}
   Enemy: {fileID: 0}
   EnemyHitbox: {fileID: 0}

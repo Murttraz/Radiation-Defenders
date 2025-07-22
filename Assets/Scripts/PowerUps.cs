@@ -56,6 +56,7 @@ public class PowerUps : MonoBehaviour
             if (p != null)
             {
                 p.transform.Translate(0, -5, 0);
+                Destroy(p, 1f);
             }
         }
     }

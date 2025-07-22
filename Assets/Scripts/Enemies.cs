@@ -71,6 +71,11 @@ public class Enemies : MonoBehaviour
             {
                 player.transform.GetComponent<Player>().AddScore(points);
             }
+            if (pemPoison != null)
+            {
+                Vector3 Spawn = new Vector3(Enemy.position.x, Enemy.position.y - 5, Enemy.position.z);
+                Instantiate(pemPoison, Spawn, Quaternion.identity);
+            }
             CancelInvoke("DealDamage");
             Destroy(this.gameObject);
         }
