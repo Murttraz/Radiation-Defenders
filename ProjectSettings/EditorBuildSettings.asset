@@ -18,13 +18,13 @@ EditorBuildSettings:
     path: Assets/Scenes/SelectMapMenu.unity
     guid: c55fed2c5e4027e4a984ee093560b6c8
   - enabled: 1
-    path: Assets/Level_1.unity
+    path: Assets/Scenes/Level_1.unity
     guid: 200cae70bbc396844a65764316786218
   - enabled: 1
-    path: Assets/Level_2.unity
+    path: Assets/Scenes/Level_2.unity
     guid: 96786cbcd49d9084bb17135d943f949e
   - enabled: 1
-    path: Assets/Tutorial.unity
+    path: Assets/Scenes/Tutorial.unity
     guid: afba21fb2b4cf0b4984f8455f4a52e46
   - enabled: 1
     path: Assets/Scenes/Level_3.unity
