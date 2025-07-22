@@ -1194,6 +1194,9 @@ MonoBehaviour:
   powers:
   - {fileID: 8445785275590631202, guid: 53122d8500f42de49b5b91e4ee3290e9, type: 3}
   - {fileID: 4836873512277010483, guid: 1fe08e56477a85d4995b1d1793ebcdee, type: 3}
+  - {fileID: 8445785275590631202, guid: 53122d8500f42de49b5b91e4ee3290e9, type: 3}
+  - {fileID: 4836873512277010483, guid: 1fe08e56477a85d4995b1d1793ebcdee, type: 3}
+  - {fileID: 4836873512277010483, guid: 1fe08e56477a85d4995b1d1793ebcdee, type: 3}
   transforms:
   - {fileID: 1722933137}
   - {fileID: 1029142816}
