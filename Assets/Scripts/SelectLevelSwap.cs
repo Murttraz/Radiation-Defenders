@@ -13,7 +13,7 @@ public class SelectLevelSwap : MonoBehaviour {
 
     void Start() {
         
-        menuButton.onClick.AddListener(SwapTutorialLevel);
+        tutorialButton.onClick.AddListener(SwapTutorialLevel);
         map1Button.onClick.AddListener(SwapLevel1);
         map2Button.onClick.AddListener(SwapLevel2);
         map3Button.onClick.AddListener(SwapLevel3);
@@ -21,19 +21,21 @@ public class SelectLevelSwap : MonoBehaviour {
     }
 
     public void SwapTutorialLevel() {
-        SceneManager.LoadScene("TutorialLevel");
+        SceneManager.LoadScene("Tutorial");
+        Debug.Log("Tutorial Button Pressed");
     }
 
     public void SwapLevel1() {
-        SceneManager.LoadScene("Map1");
+        SceneManager.LoadScene("Level_1");
+        Debug.Log("Level1 Button Pressed");
     }
 
     public void SwapLevel2() {
-        SceneManager.LoadScene("Map2");
+        SceneManager.LoadScene("Level_2");
     }
 
     public void SwapLevel3() {
-        SceneManager.LoadScene("Map3");
+        SceneManager.LoadScene("Level_3");
     }
 
     public void SwapMenu() {
