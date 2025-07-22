@@ -11,7 +11,7 @@ public class PowerUps : MonoBehaviour
     Player player;
     EnemySpawn CurrentEnemies;
     GameObject Beam;
-    public GameObject[] PemPoisons;
+    public PemDamage[] PemPoisons;
 
     //List<GameObject> EnemyList;
 
@@ -25,7 +25,8 @@ public class PowerUps : MonoBehaviour
             PowerType = "Temozolomide";
         else if (this.gameObject.name.Contains("Pembrolizumab")) {
             PowerType = "Pembrolizumab";
-            PemPoisons = GameObject.FindGameObjectsWithTag("Pem");
+            //PemPoisons = GameObject.FindGameObjectsWithTag("Pem");
+            PemPoisons = PemDamage.FindObjectsByType<PemDamage>(FindObjectsInactive.Include, FindObjectsSortMode.None);
         }
 
         player = GameObject.FindGameObjectWithTag("player").GetComponent<Player>();
@@ -42,19 +43,20 @@ public class PowerUps : MonoBehaviour
 
     IEnumerator Pem()
     {
-        foreach (GameObject p in PemPoisons)
-        {
-            if (p != null && p.transform.position.y <= 0)
-            {
-                p.transform.Translate(0, 5, 0);
-            }
-        }
-        yield return new WaitForSecondsRealtime(3f);
-        foreach (GameObject p in PemPoisons)
+        foreach (PemDamage p in PemPoisons)
         {
             if (p != null)
             {
-                p.transform.Translate(0, -5, 0);
+                p.gameObject.SetActive(true);
+            }
+        }
+        yield return new WaitForSecondsRealtime(3f);
+        foreach (PemDamage p in PemPoisons)
+        {
+            if (p != null)
+            {
+                //p.gameObject.SetActive(false);
+                Destroy(p.gameObject, 1f);
             }
         }
     }
@@ -72,7 +74,7 @@ public class PowerUps : MonoBehaviour
             switch (PowerType)
             {
                 case ("Peposertib"):
-                    this.gameObject.transform.Translate(0, -5, 0);
+                    this.gameObject.transform.Translate(50, -5, 0);
                     foreach (GameObject c in CurrentEnemies.SpawnedEnemies)
                     {
                         if (c != null)
@@ -82,12 +84,12 @@ public class PowerUps : MonoBehaviour
                     Destroy(this.gameObject, 1f);
                 break;
                 case ("Temozolomide"):
-                    this.gameObject.transform.Translate(0, -5, 0);
+                    this.gameObject.transform.Translate(50, -5, 0);
                     StartCoroutine(Temo());
                     Destroy(this.gameObject, 6f);
                     break;
                 case ("Pembrolizumab"):
-                    this.gameObject.transform.Translate(0, -5, 0);
+                    this.gameObject.transform.Translate(50, -5, 0);
                     StartCoroutine(Pem());
                     Destroy(this.gameObject, 12f);
                     break;

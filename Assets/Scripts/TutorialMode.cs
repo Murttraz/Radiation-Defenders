@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class TutorialMode : MonoBehaviour
 {
@@ -58,6 +59,10 @@ public class TutorialMode : MonoBehaviour
             {
                 enemySpawn.EnemyList.Add(Enemy);
             }
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("MainMenu"); // Load the main menu scene when Escape is pressed
         }
     }
 }
