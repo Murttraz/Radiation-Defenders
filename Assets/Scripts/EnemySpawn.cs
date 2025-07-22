@@ -1,10 +1,14 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class EnemySpawn : MonoBehaviour
 {
     public GameObject Enemy;
     public List<GameObject> EnemyList = new List<GameObject>();
+    Scene Scene;
+    public GameObject LevelClear;
     public GameObject[] SpawnedEnemies;
     public Transform[] SpawnLocs;
     int counter = 0;
@@ -19,6 +23,8 @@ public class EnemySpawn : MonoBehaviour
         InvokeRepeating("Spawn", 2f, 3f);
         SE = SpawnedEnemies.Length-1;
         SL = SpawnLocs.Length-1;
+        Scene = SceneManager.GetActiveScene();
+        LevelClear.SetActive(false);
     }
 
     void Spawn()
@@ -42,6 +48,20 @@ public class EnemySpawn : MonoBehaviour
         if (EnemyList.Count <= 0)
         {
             CancelInvoke();
+            if (SpawnedEnemies.Length > 0)
+            {
+                bool allEnemiesCleared = true;
+                foreach (GameObject enemy in SpawnedEnemies)
+                {
+                    if (enemy != null)
+                    {
+                        allEnemiesCleared = false;
+                        break;
+                    }
+                }
+                if (allEnemiesCleared)
+                    LevelClear.SetActive(true);
+            }
         }
     }
 }

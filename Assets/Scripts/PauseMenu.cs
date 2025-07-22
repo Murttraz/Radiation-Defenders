@@ -46,6 +46,20 @@ public class PauseMenu : MonoBehaviour{
         SceneManager.LoadScene("MainMenu");
     }
 
+    public void RestartLevel() {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void NextLevel() {
+        if(SceneManager.GetActiveScene().name == "Level_1") {
+            SceneManager.LoadScene("Level_2");
+        } 
+        else if (SceneManager.GetActiveScene().name == "Level_2")
+        {
+            SceneManager.LoadScene("Level_3");
+        }
+    }
+
     public void QuitGame() {
         Application.Quit();
     }

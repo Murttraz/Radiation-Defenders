@@ -24,6 +24,8 @@ public class Player : MonoBehaviour
     public Transform Barrel;
     public Rigidbody BeamGun_rb, BeamEnd;
 
+    public GameObject StaminaLow;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     
 
@@ -50,6 +52,8 @@ public class Player : MonoBehaviour
         Barrel.gameObject.SetActive(false);
 
         score = 0;
+
+        StaminaLow.SetActive(false);
     }
 
     // Update is called once per frame
@@ -78,6 +82,7 @@ public class Player : MonoBehaviour
         if(playerStamina <= 0)
         {
             this.gameObject.SetActive(false);
+            StaminaLow.SetActive(true);
             Time.timeScale = 0f;
         }
         
