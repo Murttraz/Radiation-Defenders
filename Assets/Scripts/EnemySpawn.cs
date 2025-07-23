@@ -13,6 +13,7 @@ public class EnemySpawn : MonoBehaviour
     public Transform[] SpawnLocs;
     int counter = 0;
     int SE, SL;
+    public bool isTutorialMode = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -59,7 +60,7 @@ public class EnemySpawn : MonoBehaviour
                         break;
                     }
                 }
-                if (allEnemiesCleared)
+                if (allEnemiesCleared && !isTutorialMode)
                     LevelClear.SetActive(true);
             }
         }

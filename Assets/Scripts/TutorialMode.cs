@@ -17,6 +17,8 @@ public class TutorialMode : MonoBehaviour
         tutorialEnemy.SetActive(false);
         buttonList[0].gameObject.SetActive(true);
         player.playerStamina = 9999;
+        enemySpawn.isTutorialMode = true; // Set enemy spawn to tutorial mode
+        player.isTutorialMode = true; // Set player to tutorial mode
     }
 
     void NextButton()

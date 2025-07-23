@@ -25,9 +25,10 @@ public class Player : MonoBehaviour
     public Rigidbody BeamGun_rb, BeamEnd;
 
     public GameObject StaminaLow;
+    public bool isTutorialMode = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    
+
 
     private void OnEnable()
     {
@@ -79,7 +80,7 @@ public class Player : MonoBehaviour
         if(meter <= 0)
             Barrel.gameObject.SetActive(false);
 
-        if(playerStamina <= 0)
+        if(playerStamina <= 0 && !isTutorialMode)
         {
             this.gameObject.SetActive(false);
             StaminaLow.SetActive(true);
