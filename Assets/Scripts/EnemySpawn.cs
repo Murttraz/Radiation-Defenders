@@ -15,6 +15,9 @@ public class EnemySpawn : MonoBehaviour
     int SE, SL;
     public bool isTutorialMode = false;
 
+    public int enemiesKilled;
+    bool sceneSwapped;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
