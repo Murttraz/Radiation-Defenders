@@ -25,8 +25,11 @@ public class Player : MonoBehaviour
     public Transform Barrel;
     public Rigidbody BeamGun_rb, BeamEnd;
 
+    public GameObject StaminaLow;
+    public bool isTutorialMode = false;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    
+
 
     private void OnEnable()
     {
@@ -51,6 +54,8 @@ public class Player : MonoBehaviour
         Barrel.gameObject.SetActive(false);
 
         score = 0;
+
+        StaminaLow.SetActive(false);
     }
 
     // Update is called once per frame
@@ -76,9 +81,10 @@ public class Player : MonoBehaviour
         if(meter <= 0)
             Barrel.gameObject.SetActive(false);
 
-        if(playerStamina <= 0)
+        if(playerStamina <= 0 && !isTutorialMode)
         {
             this.gameObject.SetActive(false);
+            StaminaLow.SetActive(true);
             Time.timeScale = 0f;
             SceneManager.LoadScene("DefeatScreen");
         }

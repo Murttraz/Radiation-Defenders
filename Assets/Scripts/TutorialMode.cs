@@ -2,8 +2,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.SceneManagement;
-
 public class TutorialMode : MonoBehaviour
 {
     public EnemySpawn enemySpawn;
@@ -19,6 +17,8 @@ public class TutorialMode : MonoBehaviour
         tutorialEnemy.SetActive(false);
         buttonList[0].gameObject.SetActive(true);
         player.playerStamina = 9999;
+        enemySpawn.isTutorialMode = true; // Set enemy spawn to tutorial mode
+        player.isTutorialMode = true; // Set player to tutorial mode
     }
 
     void NextButton()
@@ -59,10 +59,6 @@ public class TutorialMode : MonoBehaviour
             {
                 enemySpawn.EnemyList.Add(Enemy);
             }
-        }
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            SceneManager.LoadScene("MainMenu"); // Load the main menu scene when Escape is pressed
         }
     }
 }
