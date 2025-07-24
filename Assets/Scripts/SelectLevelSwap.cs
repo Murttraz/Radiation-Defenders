@@ -21,25 +21,25 @@ public class SelectLevelSwap : MonoBehaviour {
     }
 
     public void SwapTutorialLevel() {
-        SceneManager.LoadScene("Tutorial");
+        SceneManager.LoadScene("TutorialNarrative");
         Debug.Log("Tutorial Button Pressed");
     }
 
     public void SwapLevel1() {
-        SceneManager.LoadScene("Level_1");
+        SceneManager.LoadScene("Level_1Narrative");
         Debug.Log("Level1 Button Pressed");
     }
 
     public void SwapLevel2() {
-        SceneManager.LoadScene("Level_2");
+        SceneManager.LoadScene("Level_2Narrative");
     }
 
     public void SwapLevel3() {
-        SceneManager.LoadScene("Level_3");
+        SceneManager.LoadScene("Level_3Narrative");
     }
 
     public void SwapMenu() {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("MainMenuNarrative");
     }
 
 }

@@ -38,6 +38,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FinalVictoryScreen.unity
     guid: c44c95da1104b8f4cb36140b5410efea
+  - enabled: 1
+    path: Assets/Scenes/Level_1Narrative.unity
+    guid: 974ccfe98282fad4a93907c7004fcea4
+  - enabled: 1
+    path: Assets/Scenes/Level_2Narrative.unity
+    guid: 3de7aa083741ce14287b1260bc1064f1
+  - enabled: 1
+    path: Assets/Scenes/Level_3Narrative.unity
+    guid: 3ab784dc2b1defe4aac79c0d395084f8
+  - enabled: 1
+    path: Assets/Scenes/TutorialNarrative.unity
+    guid: b758d7d020bb12f459d2a2d09f838c87
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
