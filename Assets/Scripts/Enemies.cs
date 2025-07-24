@@ -7,6 +7,7 @@ public class Enemies : MonoBehaviour
     float health, harm;
     int points;
     public GameObject player, pemPoison;
+    public EnemySpawn spawner;
 
     [SerializeField] private Rigidbody rb;
     [SerializeField] private Transform Enemy;
@@ -80,6 +81,8 @@ public class Enemies : MonoBehaviour
             }
             CancelInvoke("DealDamage");
             Destroy(this.gameObject);
+            spawner.enemiesKilled++;
+            
         }
     }
 }

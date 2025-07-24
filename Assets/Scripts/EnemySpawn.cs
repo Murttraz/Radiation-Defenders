@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemySpawn : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class EnemySpawn : MonoBehaviour
     public Transform[] SpawnLocs;
     int counter = 0;
     int SE, SL;
+    public int enemiesKilled;
+    bool sceneSwapped = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -36,12 +39,27 @@ public class EnemySpawn : MonoBehaviour
         //counter++;
     }
 
+    void enemiesDestroyed() {
+
+        if (SceneManager.GetActiveScene().name == "Level_3") {
+            SceneManager.LoadScene("FinalVictoryScreen");
+        } else {
+            SceneManager.LoadScene("VictoryScreen");
+        }
+
+    }
+
     // Update is called once per frame
     void Update()
     {
         if (EnemyList.Count <= 0)
         {
             CancelInvoke();
+        }
+        
+        if (enemiesKilled == 15 && !sceneSwapped) {
+            sceneSwapped = true;
+            enemiesDestroyed();
         }
     }
 }

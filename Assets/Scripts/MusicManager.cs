@@ -7,7 +7,7 @@ public class MusicManager : MonoBehaviour {
     
     // ensure we only have one MusicManager across all scenes.
     private static MusicManager instance;
-    // create audioSource variable that plays music
+
     private AudioSource audioSource;
 
     void Awake() {

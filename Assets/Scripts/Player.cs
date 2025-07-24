@@ -4,6 +4,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -79,6 +80,7 @@ public class Player : MonoBehaviour
         {
             this.gameObject.SetActive(false);
             Time.timeScale = 0f;
+            SceneManager.LoadScene("DefeatScreen");
         }
         
         BeamEnd.position = Barrel.position + Barrel.forward * intensity;
