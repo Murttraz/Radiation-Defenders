@@ -36,6 +36,7 @@ public class Enemies : MonoBehaviour
         DamageShrink = new Vector3(-0.1f, -0.1f, -0.1f);
         player = GameObject.FindWithTag("player");
         points = 500;
+        spawner = GameObject.Find("EnemySpawner").GetComponent<EnemySpawn>();
     }
 
     void Grow()
