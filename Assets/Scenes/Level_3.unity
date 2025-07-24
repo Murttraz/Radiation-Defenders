@@ -1993,7 +1993,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1040913469
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2356,7 +2356,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1261515316
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2496,6 +2496,7 @@ MonoBehaviour:
   - {fileID: 1878685361}
   - {fileID: 1057896598}
   isTutorialMode: 0
+  enemiesKilled: 0
 --- !u!4 &1340510151
 Transform:
   m_ObjectHideFlags: 0
