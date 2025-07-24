@@ -1196,7 +1196,6 @@ MonoBehaviour:
   - {fileID: 4836873512277010483, guid: 1fe08e56477a85d4995b1d1793ebcdee, type: 3}
   - {fileID: 8445785275590631202, guid: 53122d8500f42de49b5b91e4ee3290e9, type: 3}
   - {fileID: 4836873512277010483, guid: 1fe08e56477a85d4995b1d1793ebcdee, type: 3}
-  - {fileID: 4836873512277010483, guid: 1fe08e56477a85d4995b1d1793ebcdee, type: 3}
   transforms:
   - {fileID: 1722933137}
   - {fileID: 1029142816}
@@ -1501,6 +1500,7 @@ MonoBehaviour:
   BeamGun_rb: {fileID: 739314790}
   BeamEnd: {fileID: 1976714821}
   StaminaLow: {fileID: 641393814}
+  isTutorialMode: 0
 --- !u!114 &610225085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3307,6 +3307,7 @@ MonoBehaviour:
   - {fileID: 23782204}
   - {fileID: 1913573053}
   - {fileID: 1544626073}
+  isTutorialMode: 0
 --- !u!4 &1340510151
 Transform:
   m_ObjectHideFlags: 0
