@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class CreditsMenuSwap : MonoBehaviour {
 
     public Button menuButton;
+    public GameObject panel; 
 
     void Start() {
         
@@ -14,5 +15,10 @@ public class CreditsMenuSwap : MonoBehaviour {
 
     public void SwapMenu() {
         SceneManager.LoadScene("MainMenu");
+    }
+
+    public void ShowAttribs()
+    {
+        panel.SetActive(!panel.activeSelf);
     }
 }
